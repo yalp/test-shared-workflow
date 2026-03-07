@@ -1,4 +1,4 @@
-ame: Dispatch Promote
+name: Dispatch Promote
 
 on:
   workflow_call:
