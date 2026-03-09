@@ -16,11 +16,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Dispatch promote event to test-dispatch repo
-        env:
-          GH_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
-        run: |
-          gh api \
-            repos/yalp/test-dispatch \
-            --method POST \
-            --field event_type=test \
-            --field "client_payload[app_repo]=${{ github.repository }}"
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.DISPATCH_TOKEN }}
+          repository: "yalp/test-dispatch"
+          event-type: test
+          client-payload: >-
+            {
+              "app_repo": "${{ github.repository }}"
+            }
