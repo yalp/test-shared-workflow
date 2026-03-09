@@ -7,6 +7,10 @@ on:
         description: "Release to promote"
         type: string
         required: true
+    secrets:
+      DISPATCH_TOKEN:
+        required: true
+      
 jobs:
   dispatch:
     runs-on: ubuntu-latest
