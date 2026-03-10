@@ -19,7 +19,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
         run: |
-          gh workflow run dispatch.yaml \
+          gh workflow run dispatch.yml \
             --repo "yalp/test-dispatch" \
             --ref main \
             --field app_repo="${{ github.repository }}" \
