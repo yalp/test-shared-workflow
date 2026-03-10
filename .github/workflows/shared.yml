@@ -15,13 +15,11 @@ jobs:
   dispatch:
     runs-on: ubuntu-latest
     steps:
-      - name: Dispatch promote event to test-dispatch repo
-        uses: peter-evans/repository-dispatch@v3
-        with:
-          token: ${{ secrets.DISPATCH_TOKEN }}
-          repository: "yalp/test-dispatch"
-          event-type: test
-          client-payload: >-
-            {
-              "app_repo": "${{ github.repository }}"
-            }
+      - name: Dispatch test
+        env:
+          GH_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
+        run: |
+          gh workflow run on-app-update.yaml \
+            --repo "yalp/test-dispatch" \
+            --ref main \
+            --field app_repo="${{ github.repository }}" \
