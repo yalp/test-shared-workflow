@@ -7,6 +7,9 @@ on:
         description: "Release to promote"
         type: string
         required: true
+      environment:
+        descrption: "Target env"
+        required: true
     secrets:
       DISPATCH_TOKEN:
         required: true
@@ -14,7 +17,13 @@ on:
 jobs:
   dispatch:
     runs-on: ubuntu-latest
+    environment:
+      name: $‘{{ inputs.environment }}
+      deployment: false
     steps:
+      - name: Check secrets
+        run: |
+          echo "Test: ${{ toJson(secrets) }}"
       - name: Dispatch test
         env:
           GH_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
