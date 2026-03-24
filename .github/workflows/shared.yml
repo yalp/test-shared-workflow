@@ -8,7 +8,7 @@ on:
         type: string
         required: true
       environment:
-        descrption: "Target env"
+        description: "Target env"
         type: string
         required: true
     secrets:
