@@ -9,6 +9,7 @@ on:
         required: true
       environment:
         descrption: "Target env"
+        type: string
         required: true
     secrets:
       DISPATCH_TOKEN:
