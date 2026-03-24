@@ -19,7 +19,7 @@ jobs:
   dispatch:
     runs-on: ubuntu-latest
     environment:
-      name: $‘{{ inputs.environment }}
+      name: ${{ inputs.environment }}
       deployment: false
     steps:
       - name: Check secrets
